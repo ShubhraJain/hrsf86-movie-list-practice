@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
+import App from './components/app'
 
+// const movies = [
+//                   {title: 'Mean Girls'},
+//                   {title: 'Hackers'},
+//                   {title: 'The Grey'},
+//                   {title: 'Sunshine'},
+//                   {title: 'Ex Machina'},
+//                 ];
 
-class MovieList extends React.Component {
-  constructor() {
-    super();
-  }
+// class MovieList extends React.Component {
+//   constructor(props) {
+//     super(props);
 
-  render() {
-    return (
-      <div></div>
-    )
-  }
-}
+//     this.state = {
+//       movies
+//     }
+//   }
 
-ReactDOM.render( <MovieList />, document.getElementById('app'));
+//   render() {
+//     return (
+//       <div class="outer-container">
+//         <Movie movies={this.state.movies}/>
+//       </div>
+//     )
+//   }
+// }
+
+ReactDOM.render( <App />, document.getElementById('app'));

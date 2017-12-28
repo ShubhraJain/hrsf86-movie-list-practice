@@ -1,0 +1,95 @@
+.main {
+  width: 600px;
+  height: 600px;
+  border: 1px solid lightgray;
+}
+
+h2 {
+  width: 590px;
+  font-family: 'Comic Sans MS';
+  padding: 0 0 10px 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.movies-list {
+  clear: both;
+  /*border: 1px solid red;*/
+  margin-left: 20px;
+  margin-top: 50px;
+}
+.movie-item {
+  width: 90%;
+  height: 35px;
+  /*margin-top:  5px;*/
+  border: 1px solid lightgray;
+  text-align: left;
+  padding: 20px 0 0 20px;
+  font-family: 'Helvetica';
+  margin: 0 1% 0 1%
+}
+
+.search-box {
+  width: 250px;
+  height: 35px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  font-size: 13px;
+  padding-left: 20px;
+}
+
+.go-button {
+  width: 45px;
+  height: 38px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.search-bar {
+  float: right;
+  padding-right: 20px;
+  /*margin-top: 20px;
+  margin-bottom: 10px;*/
+  margin: 20px 11px 10px 0;
+}
+
+.add-movie {
+  height: 35px;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  font-size: 13px;
+  padding-left: 20px;
+  /*margin-left: 26px;
+  margin-top: 10px;*/
+  margin: 10px 0 10px 26px; 
+}
+
+.add-button {
+  height: 37px;
+  width: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-left: 7px;
+  background-color: #3a9606;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.status-buttons {
+  float: left;
+  margin-left: 26px;
+}
+
+.status-btn-name {
+  height: 50px;
+  width: 100px;
+  margin-top: 20px;
+  border-radius: 3px;
+  font-size: 15px;
+  font-family: 'Helvetica';
+}
