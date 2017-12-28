@@ -9,7 +9,7 @@ class AddMovie extends React.Component {
     event.preventDefault();
     var title = this.refs.addNewMovieTitle.value;
     this.props.addMovieTitle(title);
-    title = '';
+    this.refs.addNewMovieTitle.value = '';
   }
 
   render() {

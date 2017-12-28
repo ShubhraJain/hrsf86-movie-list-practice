@@ -34,12 +34,14 @@ class App extends React.Component {
     });
   }
 
-  addMovieTitle(movie) {
-    if (movie === '') {
-      return <div>Please enter a movie title!!</div>
-    }
-    this.state.movies.push({
-      movie
+  addMovieTitle(title) {
+    // Needs to be placed in movielist component
+    // if (title === '') {
+    //   console.log('title is empty');
+    //   return <div>Please enter a movie title!!</div>
+    // }
+    this.state.movies.unshift({
+      title
     });
     this.setState({
       movies: this.state.movies

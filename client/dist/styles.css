@@ -5,17 +5,17 @@
 }
 
 h2 {
-  width: 590px;
+  width: 570px;
   font-family: 'Comic Sans MS';
-  padding: 0 0 10px 10px;
+  padding: 0 0 10px 30px;
   border-bottom: 1px solid lightgray;
 }
 
 .movies-list {
   clear: both;
-  /*border: 1px solid red;*/
   margin-left: 20px;
   margin-top: 50px;
+  /*height: 350px;*/
 }
 .movie-item {
   width: 90%;
@@ -92,4 +92,23 @@ h2 {
   border-radius: 3px;
   font-size: 15px;
   font-family: 'Helvetica';
+}
+
+.unwatched-button, .watched-button {
+  float: right;
+  margin-right: 25px;
+  border-radius: 5px;
+  font-family: 'Helvetica';
+  padding-top: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.watched-button {
+  background-color: #3a9606;
+}
+
+.unwatched-button {
+  background-color: #edeff2;
+  color: #a6b1c1;
 }
