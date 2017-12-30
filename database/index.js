@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var movieApi = require('../lib/api_key.js');
+var movieApi = require('../lib/movieAPI.js');
 
 var connection = mysql.createConnection( {
   host: 'localhost',
@@ -12,9 +12,9 @@ module.exports = {
     const queryStr = 'select * from movies';
     connection.query(queryStr, function(err, results) {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
-        callback(results);  
+        callback(null, results);  
       }
     });
   },

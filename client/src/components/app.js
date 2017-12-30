@@ -1,8 +1,8 @@
 import React from 'react';
-import MovieList from './MovieList';
-import Search from './Search';
-import AddMovie from './AddMovie';
-import StatusButtons from './StatusButtons';
+import MovieList from './MovieList.jsx';
+import Search from './Search.jsx';
+import AddMovie from './AddMovie.jsx';
+import StatusButtons from './StatusButtons.jsx';
 
 const movies = [
   {title: 'Mean Girls'},
@@ -22,9 +22,6 @@ class App extends React.Component {
   }
 
   searchMovies(searchStr) {
-    console.log("searched for : " + searchStr);
-    console.log(this);
-    console.log(this.state);
     if (searchStr === '') {
       this.setState({movies: movies})
     }
@@ -35,11 +32,6 @@ class App extends React.Component {
   }
 
   addMovieTitle(title) {
-    // Needs to be placed in movielist component
-    // if (title === '') {
-    //   console.log('title is empty');
-    //   return <div>Please enter a movie title!!</div>
-    // }
     this.state.movies.unshift({
       title
     });

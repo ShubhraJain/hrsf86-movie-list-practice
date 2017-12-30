@@ -1,4 +1,4 @@
-DROP DATABASE movielist;
+DROP DATABASE IF EXISTS movielist;
 
 CREATE DATABASE movielist;
 
