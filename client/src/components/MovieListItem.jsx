@@ -13,7 +13,7 @@ class MovieListItem extends React.Component {
     if (this.props.movie.watched) {
       return <button className="watched-button" onClick={this.toggleWatched.bind(this)}>Watched</button>
     } else {
-      return <button className="unwatched-button" onClick={this.toggleWatched.bind(this)}>Watched</button>
+      return <button className="unwatched-button" onClick={this.toggleWatched.bind(this)}>To Watch</button>
     }
   }
 

@@ -15,7 +15,6 @@ class Search extends React.Component {
   }
 
   handleGo(event) {
-    // console.log("searchStr = " + this.refs.searchStr.value);
     const searchStr = this.refs.searchStr.value;
     this.props.onSearch(searchStr);
     this.refs.searchStr.value = '';

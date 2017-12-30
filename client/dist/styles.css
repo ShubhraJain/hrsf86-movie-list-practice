@@ -97,6 +97,7 @@ h2 {
   border-radius: 3px;
   font-size: 15px;
   font-family: 'Helvetica';
+  cursor: pointer;
 }
 
 .unwatched-button, .watched-button {

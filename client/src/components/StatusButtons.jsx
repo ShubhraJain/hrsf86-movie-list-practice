@@ -8,6 +8,7 @@ class StatusButtons extends React.Component {
   watchedFilter(movie) {
     return movie.watched;
   }
+  
   unWatchedFilter(movie) {
     return !movie.watched;
   }

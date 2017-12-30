@@ -34,7 +34,6 @@ class App extends React.Component {
       })
     });
   }
-
   
   changeFilter(filterFunc) {
     this.setState({movieFilter: filterFunc});
@@ -75,12 +74,5 @@ class App extends React.Component {
     )
   }
 } 
-
-// for (var i = 0; i < this.state.movies.length; i++) {
-//       if (this.state.movies[i].title === movie.title) {
-//         this.state.movies[i].watched = !this.state.movies[i].watched;
-//       }
-//     }
-//     this.setState({movies: this.state.movies});
 
 export default App;
