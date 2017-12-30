@@ -5,20 +5,39 @@ import AddMovie from './AddMovie.jsx';
 import StatusButtons from './StatusButtons.jsx';
 
 const movies = [
-  {title: 'Mean Girls'},
-  {title: 'Hackers'},
-  {title: 'The Grey'},
-  {title: 'Sunshine'},
-  {title: 'Ex Machina'}
+  {title: 'Mean Girls', watched: false},
+  {title: 'Hackers', watched: false},
+  {title: 'The Grey', watched: false},
+  {title: 'Sunshine', watched: false},
+  {title: 'Ex Machina', watched: false}
 ];
+
+const passThroughFilter = (movie => { return true; } )
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies
+      movies,
+      movieFilter: passThroughFilter
     }
+  }
+
+  toggleWatched(movieTitle) {
+    this.setState({
+      movies: this.state.movies.map( movie => {
+        return {
+          title: movie.title, 
+          watched: (movie.title === movieTitle) ? !movie.watched : movie.watched
+        };
+      })
+    });
+  }
+
+  
+  changeFilter(filterFunc) {
+    this.setState({movieFilter: filterFunc});
   }
 
   searchMovies(searchStr) {
@@ -45,12 +64,23 @@ class App extends React.Component {
         <div className="main">
           <h2>MovieList</h2>
           <AddMovie addMovieTitle={this.addMovieTitle.bind(this)}/>
-          <StatusButtons />
+          <StatusButtons changeFilterFunc={this.changeFilter.bind(this)}/>
           <Search onSearch={this.searchMovies.bind(this)}/>
-          <MovieList movies={this.state.movies}/>
+          <MovieList 
+            movies={this.state.movies} 
+            movieFilter={this.state.movieFilter}
+            toggleWatched={this.toggleWatched.bind(this)}
+          />
         </div>
     )
   }
 } 
+
+// for (var i = 0; i < this.state.movies.length; i++) {
+//       if (this.state.movies[i].title === movie.title) {
+//         this.state.movies[i].watched = !this.state.movies[i].watched;
+//       }
+//     }
+//     this.setState({movies: this.state.movies});
 
 export default App;

@@ -5,11 +5,26 @@ class StatusButtons extends React.Component {
     super(props);
   }
 
+  watchedFilter(movie) {
+    return movie.watched;
+  }
+  unWatchedFilter(movie) {
+    return !movie.watched;
+  }
+
+  handleWatched(event) {
+    this.props.changeFilterFunc(this.watchedFilter);
+  }
+
+  handleUnwatched(event) {
+    this.props.changeFilterFunc(this.unWatchedFilter);
+  }
+
   render() {
     return (
       <div className="status-buttons">
-        <button className="status-btn-name">Watched</button>
-        <button className="status-btn-name">To Watch</button>
+        <button className="status-btn-name" onClick={this.handleWatched.bind(this)}>Watched</button>
+        <button className="status-btn-name" onClick={this.handleUnwatched.bind(this)}>To Watch</button>
       </div>
     )
   }

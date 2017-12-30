@@ -3,20 +3,14 @@ import React from 'react';
 class MovieListItem extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      hasWatched: false
-    }
   }
 
   toggleWatched() {
-    this.setState ({
-      hasWatched: !this.state.hasWatched
-    });
+    this.props.toggleWatched(this.props.movie.title);
   }
 
   renderButton() {
-    if (this.state.hasWatched) {
+    if (this.props.movie.watched) {
       return <button className="watched-button" onClick={this.toggleWatched.bind(this)}>Watched</button>
     } else {
       return <button className="unwatched-button" onClick={this.toggleWatched.bind(this)}>Watched</button>
