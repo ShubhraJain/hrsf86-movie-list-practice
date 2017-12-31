@@ -19,7 +19,7 @@ module.exports = {
     });
   },
   insertOne: function(movie, callback) {
-    const queryStr = 'insert into movies (id, title, year, watched) values(?, ?, ?, ?)';
+    const queryStr = 'insert into movies (id, title, release_date, watched, vote_count) values(?, ?, ?, ?, ?)';
     connection.query(queryStr, [...movie], function(err, results) {
       if (err) {
         callback(err);
@@ -27,5 +27,8 @@ module.exports = {
         callback(results);
       }
     });
+  },
+  insertMany: function(movies, callback) {
+
   }
 }

@@ -1,9 +1,15 @@
 import React from 'react';
+import MovieDetails from './MovieDetails.jsx';
 
 class MovieListItem extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.state = {
+      showDetails: false
+    }
   }
+
 
   toggleWatched() {
     this.props.toggleWatched(this.props.movie.title);
@@ -17,13 +23,33 @@ class MovieListItem extends React.Component {
     }
   }
 
+  showMovieDetails() {
+    this.setState ( {
+      showDetails: !this.state.showDetails
+    });
+  }
+
+  // renderMovieDetails() {
+  //   if(this.state.showDetails) {
+  //     return <MovieDetails movie={this.props.movie} />
+  //   }
+  // }
+ 
   render() {
     return (
-      <div className="movie-item">{this.props.movie.title}
-      {this.renderButton()}
+      <div className="movie-item">
+        <span onClick={this.showMovieDetails.bind(this)}>{this.props.movie.title}</span>
+        {this.state.showDetails && <MovieDetails movie={this.props.movie} />}
+        {this.renderButton()}
       </div>
     )
   }
 }
 
 export default MovieListItem;
+
+      // <div className="movie-item">
+      //   <span onClick={this.showMovieDetails()}>{this.props.movie.title}</span>
+      //   {this.renderMovieDetails()}
+      //   {this.renderButton()}
+      // </div>
