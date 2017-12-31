@@ -25,7 +25,7 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.loadMovies();
   }
 
@@ -35,6 +35,7 @@ class App extends React.Component {
       method: 'GET',
       contentType: 'application/json',
       success: () => {
+        console.log("inside load movies success");
         this.getMovies();
       },
       error: (err) => {

@@ -10,18 +10,18 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.listen(3000, function () { console.log('MovieList app listening on port 3000!') });
 
-// const movies = [
-//   {title: 'Mean Girls', watched: false},
-//   {title: 'Hackers', watched: false},
-//   {title: 'The Grey', watched: false},
-//   {title: 'Sunshine', watched: false},
-//   {title: 'Ex Machina', watched: false}
-// ];
+var movies = [
+  // {title: 'Mean Girls', watched: false},
+  // {title: 'Hackers', watched: false},
+  // {title: 'The Grey', watched: false},
+  // {title: 'Sunshine', watched: false},
+  // {title: 'Ex Machina', watched: false}
+];
 
 app.get('/movies', (req, res) => {
   // movieDB.selectAll((err, data) => {
     if (!movies) {
-      res.status(500).send({error: err});
+      res.status(500).send({error: "No movies loaded yet"});
     } else {
       res.status(200).json(movies);
     }
@@ -29,7 +29,8 @@ app.get('/movies', (req, res) => {
 });
 
 app.get('/load', (req, res) => {
-  movieApi.getMovies(function(data) {
+  movieApi.getMovies(function(err, data) {
+    movies = data;
     res.status(200).json(data);
   });
 });

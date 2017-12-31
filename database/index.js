@@ -8,18 +8,19 @@ var connection = mysql.createConnection( {
 });
 
 module.exports = {
-  selectAll: function(callback) {
+  selectAll: (callback) => {
     const queryStr = 'select * from movies';
     connection.query(queryStr, function(err, results) {
       if (err) {
-        callback(err, null);
+        callback(err);
       } else {
-        callback(null, results);  
+        callback(results);  
       }
     });
   },
-  insertOne: function(movie, callback) {
-    const queryStr = 'insert into movies (id, title, release_date, watched, vote_count) values(?, ?, ?, ?, ?)';
+  insertOne: (movie, callback) => {
+    const queryStr = 'insert into movies (id, title, release_date, watched, vote_count)\
+                      values(?, ?, ?, ?, ?)';
     connection.query(queryStr, [...movie], function(err, results) {
       if (err) {
         callback(err);
@@ -28,7 +29,15 @@ module.exports = {
       }
     });
   },
-  insertMany: function(movies, callback) {
-
+  insertMany: (movies, callback) => {
+    const queryStr = 'insert into movies(id, title, release_date, watched, vote_count)\
+                      values ?';
+    connection.query(queryStr, movies, function(err, results) {
+      if (err) {
+        callback(err);
+      } else {
+        callback(results);
+      }
+    });
   }
 }
