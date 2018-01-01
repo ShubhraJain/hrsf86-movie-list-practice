@@ -10,29 +10,20 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.listen(3000, function () { console.log('MovieList app listening on port 3000!') });
 
-var movies = [
-  // {title: 'Mean Girls', watched: false},
-  // {title: 'Hackers', watched: false},
-  // {title: 'The Grey', watched: false},
-  // {title: 'Sunshine', watched: false},
-  // {title: 'Ex Machina', watched: false}
-];
 
 app.get('/movies', (req, res) => {
-  // movieDB.selectAll((err, data) => {
+  movieDB.selectAll((err, movies) => {
     if (!movies) {
       res.status(500).send({error: "No movies loaded yet"});
     } else {
       res.status(200).json(movies);
     }
-  // });
+  });
 });
 
 app.get('/loadOne', (req, res) => {
-  movieApi.getMovies(function(err, data) {
-    movies = data;
-
-   movies.forEach(function(movie) {
+  movieApi.getMovies(function(err, movies) {
+    movies.forEach(function(movie) {
       movieDB.insertOne(movie, (err, results) => {
         if (err) {
           console.log('error inside load of server/index', err);
@@ -42,14 +33,12 @@ app.get('/loadOne', (req, res) => {
       });
     });
 
-    res.status(200).json(data);
+    res.status(200).json(movies);
   });
 });
 
 app.get('/load', (req, res) => {
-  movieApi.getMovies(function(err, data) {
-    movies = data;
-
+  movieApi.getMovies(function(err, movies) {
     movieDB.insertMany(movies, (err, results) => {
       if (err) {
         console.log('error inside load of server/index', err);
@@ -58,26 +47,20 @@ app.get('/load', (req, res) => {
       }
     });
 
-    res.status(200).json(data);
+    res.status(200).json(movies);
   });
 });
 
 app.post('/movie', (req, res) => {
-  var newMovie = {}
   if(!req.body) {
     res.status(400).send({error: 'Bad Request'});
   } else {
-    // movieDB.insertOne(newMovie, (err) => {
-    //   if (err) {
-    //     res.status(500).send({error: err});
-    //   } else {
-    //     res.status(201).end();
-    //   }
-    // });
-    movies.unshift({
-      title: req.body.title,
-      watched: false
+    movieDB.insertOne(req.body, (err, results) => {
+      if (err) {
+        res.status(500).send({error: err});
+      } else {
+        res.status(201).end();
+      }
     });
-    res.status(201).json(movies);
   }  
 });

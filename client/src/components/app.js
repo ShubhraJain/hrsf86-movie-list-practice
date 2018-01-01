@@ -5,14 +5,6 @@ import AddMovie from './AddMovie.jsx';
 import StatusButtons from './StatusButtons.jsx';
 import $ from 'jquery';
 
-// const movies = [
-//   {title: 'Mean Girls', watched: false},
-//   {title: 'Hackers', watched: false},
-//   {title: 'The Grey', watched: false},
-//   {title: 'Sunshine', watched: false},
-//   {title: 'Ex Machina', watched: false}
-// ];
-
 const passThroughFilter = (movie => { return true; } )
 
 class App extends React.Component {
@@ -63,12 +55,6 @@ class App extends React.Component {
   }
 
   addMovieTitle(title) {
-    // this.state.movies.unshift({
-    //   title
-    // });
-    // this.setState({
-    //   movies: this.state.movies
-    // });
     console.log('title in add movie', JSON.stringify(title));
     $.ajax({
       url: '/movie',

@@ -23,9 +23,9 @@ module.exports = {
     const queryStr = 'SELECT * FROM movies';
     connection.query(queryStr, function(err, results) {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
-        callback(results);  
+        callback(null, results);  
       }
     });
   },
@@ -47,7 +47,7 @@ module.exports = {
         { return [movie.id, movie.title, movie.release_date, 
                   false /* watched */, movie.vote_count]; 
         });
-    console.log(movieArr);
+    // console.log(movieArr);
     const queryStr = 'insert ignore into movies values ?';
     var query = connection.query(queryStr, [movieArr], function(err, results) {
       if (err) {
