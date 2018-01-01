@@ -39,8 +39,8 @@ class MovieListItem extends React.Component {
     return (
       <div className="movie-item">
         <span onClick={this.showMovieDetails.bind(this)}>{this.props.movie.title}</span>
-        {this.state.showDetails && <MovieDetails movie={this.props.movie} />}
         {this.renderButton()}
+        {this.state.showDetails && <MovieDetails movie={this.props.movie} />}
       </div>
     )
   }

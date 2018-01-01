@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const movieDB = require('../database/index.js');
+const movieDB = require('../database/database.js');
 const movieApi = require('../lib/movieAPI.js');
 
 
@@ -28,15 +28,41 @@ app.get('/movies', (req, res) => {
   // });
 });
 
+app.get('/loadOne', (req, res) => {
+  movieApi.getMovies(function(err, data) {
+    movies = data;
+
+   movies.forEach(function(movie) {
+      movieDB.insertOne(movie, (err, results) => {
+        if (err) {
+          console.log('error inside load of server/index', err);
+        } else {
+          console.log('movies added to db:', results.affectedRows);
+        }
+      });
+    });
+
+    res.status(200).json(data);
+  });
+});
+
 app.get('/load', (req, res) => {
   movieApi.getMovies(function(err, data) {
     movies = data;
+
+    movieDB.insertMany(movies, (err, results) => {
+      if (err) {
+        console.log('error inside load of server/index', err);
+      } else {
+        console.log('movies added to db:', results.affectedRows);
+      }
+    });
+
     res.status(200).json(data);
   });
 });
 
 app.post('/movie', (req, res) => {
-
   var newMovie = {}
   if(!req.body) {
     res.status(400).send({error: 'Bad Request'});
@@ -45,7 +71,7 @@ app.post('/movie', (req, res) => {
     //   if (err) {
     //     res.status(500).send({error: err});
     //   } else {
-    //     res.status(201);
+    //     res.status(201).end();
     //   }
     // });
     movies.unshift({
