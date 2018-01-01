@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    console.log('will mount called');
     this.loadMovies();
   }
 
@@ -82,6 +81,20 @@ class App extends React.Component {
           watched: (movie.title === movieTitle) ? !movie.watched : movie.watched
         };
       })
+    });
+    $.ajax({
+      url: '/updateMovie',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        title: movieTitle
+      }),
+      success: () => {
+        this.getMovies();
+      },
+      error: (err) => {
+        console.log('error while updating watched status-----------', err);
+      }
     });
   }
   

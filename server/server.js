@@ -64,3 +64,13 @@ app.post('/movie', (req, res) => {
     });
   }  
 });
+
+app.post('/updateMovie', (req, res) => {
+  movieDB.updateColumn(req.body.title, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.status(201).end();
+    }
+  });
+});
