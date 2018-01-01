@@ -10,5 +10,7 @@ CREATE TABLE movies (
   -- movie_id int, 
   release_date date,
   watched boolean,
-  vote_count int
+  vote_count int,
+  overview varchar(1000),
+  poster_path varchar(200)
 );

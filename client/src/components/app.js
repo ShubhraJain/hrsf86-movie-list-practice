@@ -27,7 +27,6 @@ class App extends React.Component {
       method: 'GET',
       contentType: 'application/json',
       success: () => {
-        console.log("inside load movies success");
         this.getMovies();
       },
       error: (err) => {
@@ -42,7 +41,7 @@ class App extends React.Component {
       method: 'GET',
       contentType: 'application/json',
       success: (data) => {
-        console.log('data in get movies: ', data);
+        // console.log('data in get movies: ', data);
         this.setState ({
           movies: data
         })

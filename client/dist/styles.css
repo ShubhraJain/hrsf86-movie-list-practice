@@ -1,6 +1,6 @@
 .main {
   width: 600px;
-  height: 600px;
+  height: 750px;
   border: 1px solid lightgray;
 }
 
@@ -15,8 +15,13 @@ h2 {
   clear: both;
   margin-left: 20px;
   margin-top: 50px;
-  /*overflow: scroll;*/
+  overflow: auto;
+  height: 500px;
 }
+
+.movie-entry {
+}
+
 .movie-item {
   width: 90%;
   height: 35px;
@@ -25,8 +30,42 @@ h2 {
   text-align: left;
   padding: 20px 0 0 20px;
   font-family: 'Helvetica';
-  margin: 0 1% 0 1%
+  margin: 0 1% 0 1%;
+  border-radius: 7px;
 }
+
+/*.movie-entry:nth-child(even) {
+  background: #e9f7e1;
+}
+
+.movie-entry:nth-child(odd) {
+  background: #f4e1f7;
+}*/
+
+.movieDetails {
+  width: 90%;
+  height: 190px;
+  border: 1px solid lightgray;
+  text-align: left;
+  padding: 20px 0 10px 20px;
+  font-family: 'Calibri';
+  margin: 0 1% 0 1%;
+  border-radius: 7px;
+  background: #f2f0d7;
+  overflow: auto;
+}
+
+.movie-poster {
+  height: 165px;
+  width: 150px;
+  float: right;
+  padding: 7px 20px 0 0;
+  margin: 0 0 20px 20px;
+}
+
+/*.movie-properties {
+  font-weight: bold;
+}*/
 
 .search-box {
   width: 250px;
@@ -50,8 +89,6 @@ h2 {
 .search-bar {
   float: right;
   padding-right: 20px;
-  /*margin-top: 20px;
-  margin-bottom: 10px;*/
   margin: 20px 11px 10px 0;
 }
 
@@ -65,8 +102,7 @@ h2 {
   border: 1px solid lightgray;
   font-size: 13px;
   padding-left: 20px;
-  /*margin-left: 26px;
-  margin-top: 10px;*/
+  /*background: #dceff4;*/
 }
 
 .add-button {
@@ -88,6 +124,13 @@ h2 {
 .status-buttons {
   float: left;
   margin-left: 26px;
+}
+
+.status-btn-name:hover {
+  background-color: #3a9606;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
 }
 
 .status-btn-name {
@@ -119,9 +162,7 @@ h2 {
   color: #a6b1c1;
 }
 
-.movie-poster {
-  height: 150px;
-  width: 150px;
-  float: right;
-  padding-right: 20px;
+
+.movie-title {
+  cursor: pointer;
 }

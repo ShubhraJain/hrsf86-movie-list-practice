@@ -29,18 +29,20 @@ class MovieListItem extends React.Component {
     });
   }
 
-  // renderMovieDetails() {
-  //   if(this.state.showDetails) {
-  //     return <MovieDetails movie={this.props.movie} />
-  //   }
-  // }
+  renderMovieDetails() {
+    if(this.state.showDetails) {
+      return <MovieDetails movie={this.props.movie} />
+    }
+  }
  
   render() {
     return (
-      <div className="movie-item">
-        <span onClick={this.showMovieDetails.bind(this)}>{this.props.movie.title}</span>
-        {this.renderButton()}
-        {this.state.showDetails && <MovieDetails movie={this.props.movie} />}
+      <div className="movie-entry">      
+        <div className="movie-item">
+          <span className="movie-title" onClick={() => this.showMovieDetails(this.state.showDetails)}>{this.props.movie.title}</span>
+          {this.renderButton()}
+        </div>
+        {this.renderMovieDetails()}
       </div>
     )
   }
@@ -48,8 +50,4 @@ class MovieListItem extends React.Component {
 
 export default MovieListItem;
 
-      // <div className="movie-item">
-      //   <span onClick={this.showMovieDetails()}>{this.props.movie.title}</span>
-      //   {this.renderMovieDetails()}
-      //   {this.renderButton()}
-      // </div>
+        // {this.state.showDetails && <MovieDetails movie={this.props.movie} />}

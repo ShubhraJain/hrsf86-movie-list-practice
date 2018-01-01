@@ -32,7 +32,7 @@ module.exports = {
 
   insertOne: (movie, callback) => {
     var movie_details = [movie.id, movie.title, movie.release_date,
-      false /* watched */, movie.vote_count];
+      false /* watched */, movie.vote_count, movie.overview, movie.poster_path];
     const queryStr = 'insert ignore into movies values (?);'
     var query = connection.query(queryStr, [movie_details], function(err, results) {
       if (err) {
@@ -47,9 +47,8 @@ module.exports = {
   insertMany: (movies, callback) => {
     var movieArr = movies.map(movie => 
         { return [movie.id, movie.title, movie.release_date, 
-                  false /* watched */, movie.vote_count]; 
+                  false /* watched */, movie.vote_count, movie.overview, movie.poster_path]; 
         });
-    // console.log(movieArr);
     const queryStr = 'insert ignore into movies values ?';
     var query = connection.query(queryStr, [movieArr], function(err, results) {
       if (err) {
