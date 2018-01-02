@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const movieDB = require('../database/database.js');
 const movieApi = require('../lib/movieAPI.js');
-
+const Movie = require('./models/Movie.js');
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -73,4 +73,12 @@ app.post('/updateMovie', (req, res) => {
       res.status(201).end();
     }
   });
+});
+
+app.get('/search', (req, res) => {
+  console.log(Movie);
+  
+  Movie.Movie.findAll()
+  .then(result => res.status(200).json(result))
+  .catch(err => res.status(500).json(err));
 });
